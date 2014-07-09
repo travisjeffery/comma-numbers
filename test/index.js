@@ -1,8 +1,13 @@
 var Comma = require('../');
-var comma = Comma();
 var assert = require('assert');
 
 describe ('comma', function () {
+  var comma;
+
+  beforeEach(function () {
+    comma = Comma();
+  });
+
   it ('should keep the given precision', function () {
     assert.equal('1,200.42', comma(1200.42));
   });
@@ -28,5 +33,9 @@ describe ('comma', function () {
   it ('should handle the given fixed digits', function () {
     comma = Comma({digits: 2});
     assert.equal('1,200.20', comma(1200.20));
+  });
+
+  it ('should not comma 100s numbers', function () {
+    assert.equal('500', comma(500));
   });
 });

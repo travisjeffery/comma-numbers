@@ -14,9 +14,9 @@ function Comma(options) {
     var mantissa = (hasMantissa && parts[1]) || '';
 
     characteristic = reverse(characteristic);
-    characteristic = characteristic.replace(/(\d{3})/g, '$1' + reverse(options.thousandSeparator));
+    characteristic = characteristic.replace(/(\d{3})(?!$)/g, '$1' + reverse(options.thousandSeparator));
     characteristic = reverse(characteristic);
-    
+
     return hasMantissa ? characteristic + options.decimalSeparator + mantissa : characteristic;
   }
 }
